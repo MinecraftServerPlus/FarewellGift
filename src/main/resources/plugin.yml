@@ -1,0 +1,8 @@
+name: FarewellGift
+version: '${version}'
+main: io.github.gum4.farewellgift.FarewellGift
+api-version: '1.20'
+prefix: FarewellGift
+load: STARTUP
+authors: [9um4]
+description: Drop all items when a player leaves the game in "Combat" state
