@@ -2,6 +2,7 @@ package io.github.gum4.farewellgift.handlers;
 
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
+import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.entity.*;
 import org.bukkit.inventory.ItemStack;
@@ -11,12 +12,13 @@ public class GiftHandler {
 
     public static void createFarewellGift(Player player) {
         ItemDisplay skullDisplay;
+        Location location = player.getLocation();
         {
             ItemStack playerSkull = new ItemStack(Material.PLAYER_HEAD);
             SkullMeta playerSkullMeta = ((SkullMeta) playerSkull.getItemMeta());
             playerSkullMeta.setOwningPlayer(player);
             playerSkull.setItemMeta(playerSkullMeta);
-            skullDisplay = player.getWorld().spawn(player.getLocation(), ItemDisplay.class);
+            skullDisplay = player.getWorld().spawn(location.clone().add(0, 0.5, 0), ItemDisplay.class);
             skullDisplay.setItemDisplayTransform(ItemDisplay.ItemDisplayTransform.HEAD);
             skullDisplay.setItemStack(playerSkull);
             skullDisplay.customName(
@@ -28,7 +30,7 @@ public class GiftHandler {
         }
         Interaction skullHitBox;
         {
-            skullHitBox = player.getWorld().spawn(player.getLocation(), Interaction.class);
+            skullHitBox = player.getWorld().spawn(location, Interaction.class);
             skullHitBox.setInteractionWidth(0.5f);
             skullHitBox.setInteractionHeight(0.5f);
         }
